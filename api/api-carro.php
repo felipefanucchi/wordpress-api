@@ -1,12 +1,20 @@
 <?php 
     function api_get_carro( $request ) {
-        $slug = saniteze_text_field( $request->get_param('slug') );
+        $slug = sanitize_text_field( $request->get_param('slug') );
+        $page_object = get_page_by_path( $slug, OBJECT, 'carros' );
+
+        $id = $page_object->ID;
+        $titulo = $page_object->page_title;
+        $acf = get_fields($id);
 
         $carro = array(
-            'slug' => $slug
-        )
+            'slug' => $slug,
+            'id' => $id,
+            'titulo' => $titulo,
+            'acf' => $acf
+        );
         
-        return rest_ensure_response( $posts );
+        return rest_ensure_response( $carro );
     }
 
     function api_register_carro_router() {
