@@ -1,6 +1,7 @@
 <?php
     require_once TEMPLATEPATH . '/api/api-carros.php';
-    
+    require_once TEMPLATEPATH . '/api/api-carro.php';
+
     function create_carros_post() {
         register_post_type( 'carros',
             array(
