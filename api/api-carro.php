@@ -4,7 +4,7 @@
         $page_object = get_page_by_path( $slug, OBJECT, 'carros' );
 
         $id = $page_object->ID;
-        $titulo = $page_object->page_title;
+        $titulo = $page_object->post_title;
         $acf = get_fields($id);
 
         $carro = array(
