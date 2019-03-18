@@ -1,8 +1,9 @@
 <template>
   <ul class="carros">
-    <li class="carro" 
+    <li class="carro-item" 
       v-for="carro in carros" 
       :key="carro.slug"
+      :class="ativo === carro.slug ? 'ativo' : ''"
       @click="emiteCarro(carro.slug)">
       {{ carro.titulo }} <br>
       Valor: R${{ carro.preco }}
@@ -19,7 +20,8 @@ export default {
   },
   data() {
     return {
-      carros: []
+      carros: [],
+      ativo: ''
     }
   },
   methods: {
@@ -33,7 +35,8 @@ export default {
     },
 
     emiteCarro(slug) {
-      this.$emit('clicked', slug)
+      this.$emit('clicked', slug);
+      this.ativo = slug;
     }
   },
   created() {
@@ -53,7 +56,12 @@ export default {
     list-style: none;
     padding: 20px;
     border-bottom: 1px solid #ccc;
-    font-family: 'IBM Plex Mono'
+    font-family: 'IBM Plex Mono';
+    transition: all linear .2s;
+  }
+
+  .carros .carro-item.ativo {
+    background: #333;
   }
 </style>
 

@@ -10,7 +10,7 @@
             <li v-if="carro.acf.novo">Zero KM</li>
             <li v-else>Semi-novo</li>
         </ul>
-    </div>
+    </div>    
 </template>
 <script>
 import { API_URL } from '../main';
@@ -46,6 +46,7 @@ export default {
     .carro {
         border-radius: 4px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, .3);   
+        overflow: hidden;
     }
 
     .carro figure {
@@ -80,6 +81,13 @@ export default {
         font-family: 'IBM Plex Mono';
         padding: 5px 10px;
         box-sizing: border-box;
+    }
+
+    .slide-enter-active, .slide-leave-active {
+        transition: opacity .5s;
+    }
+    .slide-enter, .slide-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+        opacity: 0;
     }
 
 
